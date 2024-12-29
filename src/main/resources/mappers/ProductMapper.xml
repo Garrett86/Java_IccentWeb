@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tw.com.kai.web.webbread.mappers.ProductMapper">
+
+    <insert id="save" parameterType="tw.com.kai.web.webbread.pojo.Bread">
+        INSERT INTO breads (name, price, description) VALUES (#{name}, #{price}, #{description})
+    </insert>
+
+    <select id="search" resultType="tw.com.kai.web.webbread.pojo.Bread">
+        SELECT * FROM breads WHERE name LIKE CONCAT('%', #{breadName}, '%')
+    </select>
+
+    <delete id="delete">
+        DELETE FROM breads WHERE id = #{id}
+    </delete>
+
+    <update id="update">
+        UPDATE breads SET name = #{name}, price = #{price}, description = #{description} WHERE id = #{id}
+    </update>
+
+</mapper>

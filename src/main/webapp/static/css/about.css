@@ -1,0 +1,76 @@
+.main-top {
+  display: flex;
+  justify-content: center;
+  background-color: #ACD6FF;
+}
+.main-txt {
+  text-align: center;
+  font-size: 35px;
+  color: #408080;
+  line-height: 1.2;
+  padding: 20px 0 13px;
+  font-weight: bold;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.main-txt::before {
+  background-image: url(https://i.ibb.co/1QFpYfJ/title-deco.png);
+}
+
+.main-txt::after {
+  background-image: url(https://i.ibb.co/jM1Cj5J/title-deco2.png);
+}
+
+.main-txt::before,
+.main-txt::after {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  width: 79px;
+  height: 25px;
+  margin: -5px 20px 0;
+}
+
+.breadcrumb {
+  color: #999;
+  font-size: 13px;
+  margin-bottom: 25px;
+}
+
+.breadcrumb li + li::before {
+  content: ">";
+}
+
+.list-inline,
+.list-h,
+.list-v,
+ul.gomember-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+ol,
+ul {
+  line-height: inherit;
+  font-weight: inherit;
+}
+.list-inline > li,
+.list-inline .item {
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  list-style-type: none;
+}
+
+.breadcrumb li,
+.breadcrumb li a {
+  display: inline;
+  text-decoration: none;
+  color: #807f7f;
+}
+
+.breadcrumb li a:hover {
+  color: red;
+}

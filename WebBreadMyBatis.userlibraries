@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="Maven: junit:junit:3.8.1">
+    <archive path="C:/Users/USER/.m2/repository/junit/junit/3.8.1/junit-3.8.1.jar" />
+  </library>
+  <library name="Maven: com.mysql:mysql-connector-j:8.0.33">
+    <archive path="C:/Users/USER/.m2/repository/com/mysql/mysql-connector-j/8.0.33/mysql-connector-j-8.0.33.jar" />
+  </library>
+  <library name="Maven: javax.servlet:javax.servlet-api:4.0.1">
+    <archive path="C:/Users/USER/.m2/repository/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.jar" />
+  </library>
+  <library name="Maven: org.mybatis:mybatis:3.5.13">
+    <archive path="C:/Users/USER/.m2/repository/org/mybatis/mybatis/3.5.13/mybatis-3.5.13.jar" />
+  </library>
+  <library name="Maven: org.projectlombok:lombok:1.18.34">
+    <archive path="C:/Users/USER/.m2/repository/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar" />
+  </library>
+  <library name="Maven: com.google.code.gson:gson:2.9.0">
+    <archive path="C:/Users/USER/.m2/repository/com/google/code/gson/gson/2.9.0/gson-2.9.0.jar" />
+  </library>
+  <library name="Maven: com.google.protobuf:protobuf-java:3.21.9">
+    <archive path="C:/Users/USER/.m2/repository/com/google/protobuf/protobuf-java/3.21.9/protobuf-java-3.21.9.jar" />
+  </library>
+</eclipse-userlibraries>
+

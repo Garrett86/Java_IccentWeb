@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW" >
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=1.0, maximum-scale=3.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>松本村會員登入</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
+    <script src="https://kit.fontawesome.com/48f037bec9.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chocolate+Classical+Sans&family=Noto+Sans+JP:wght@100..900&family=Noto+Sans+SC:wght@100..900&family=Playwrite+IT+Moderna:wght@100..400&display=swap"
+        rel="stylesheet">
+    <link href="static/css/style.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="favicon.ico?v=1.0" type="image/x-icon">
+</head>
+
+<body>
+    <div class="login_header">
+        <a href="indexServlet">
+            <img src="static/images/lgo02.gif" alt="" class="logo_3"/>
+        </a>
+    </div>
+
+    <div class="login_banner">
+        <div class="l_content">
+            <span class="login_word">歡迎登入</span>
+        </div>
+
+        <div id="content">
+            <div class="login_form">
+                <div class="login_box">
+                    <div class="txt">
+                        <h1>松本村會員</h1>
+                    </div>
+                    <div class="mg_cont">
+                        <b></b>
+                        <span class="errorMsg">請輸入帳號和密碼</span>
+                    </div>
+                    <br>
+                    <div class="form">
+                        <form action="" method="post">
+                            <input type="hidden" name="operate" value="login" />
+                            <label>帳號: &nbsp;</label>
+                            <input class="itxt" type="text" placeholder="請輸入帳號" autocomplete="off" tabindex="1"
+                                name="uname" id="username" />
+                            <br>
+                            <br>
+                            <label>密碼: &nbsp;</label>
+                            <input class="itxt" type="password" placeholder="請輸入密碼" autocomplete="off" tabindex="1"
+                                name="pwd" id="password" />
+                            <br>
+                            <br>
+                            <input type="submit" name="登入" id="sub_btn">
+                        </form>
+                        <div class="tit">
+                            <a href="####">立即註冊</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="buttom">
+        <span>松本村.Copyrigth &copy; 2024</span>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

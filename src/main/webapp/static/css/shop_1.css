@@ -1,0 +1,134 @@
+.main-title {
+  text-align: center;
+  font-size: 30px;
+  color: #408080;
+  line-height: 1.2;
+  padding: 20px 0 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+a {
+  text-decoration: none;
+}
+
+ol,
+ul,
+li {
+  line-height: inherit;
+  font-weight: inherit;
+  display: block;
+}
+
+.bread-it {
+  color: #999;
+  font-size: 13px;
+  margin-bottom: 25px;
+}
+
+.bread-it li,
+.bread-it li a {
+  display: inline;
+  color: #807f7f;
+}
+.bread-it li a:hover {
+  color: red;
+}
+
+.list-it {
+  /* margin: 0; */
+  padding: 0;
+  list-style-type: none;
+}
+.bread-it li + li:before {
+  content: "> ";
+}
+
+.box {
+  margin: 0 auto 50px;
+  position: relative;
+}
+
+.pic-box {
+  width: 245px;
+  height: 245px;
+  position: relative;
+  border: 3px solid #eee;
+}
+
+.img-sh {
+  width: 260px;
+  height: 240px;
+}
+.txt {
+  padding-top: 50px;
+  float: left;
+  position: relative;
+}
+.nam {
+  display: inline-block;
+  color: #585858;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 24px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 3px;
+  max-width: 100%;
+  margin: 5px 0 0;
+}
+.offers {
+  color: red;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 5px 0;
+  padding: 0 3px;
+}
+
+.btn-group {
+  overflow: hidden;
+  width: 100%;
+}
+
+.btn-g {
+  float: left;
+  width: 75%;
+  color: #a25151;
+  font-size: 14px;
+  padding: 0 4px;
+  background-color: #ffdddc;
+  border: 1px solid #fff;
+  border-radius: 0;
+}
+
+.btn-g.ws:before {
+  content: "";
+  background-position: -125px 0;
+}
+
+.btn-g.det:before {
+  content: "";
+  background-position: -150px 0;
+}
+
+.btn-g:before {
+  margin: 0 5px 3px 0;
+  background-image: url(https://www.bestbakery.com.tw/images/common/icons.png);
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.btn-g:hover {
+  color: #fff;
+  background-color: red;
+}
+
+@media screen and (max-width: 1000px) {
+  .btn-g {
+    line-height: 27px;
+    height: 27px;
+  }
+}

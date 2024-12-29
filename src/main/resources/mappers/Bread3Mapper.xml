@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tw.com.kai.web.webbread.mappers.Bread3Mapper">
+    <select id="listBread2" resultType="tw.com.kai.web.webbread.pojo.Bread2">
+        select * from t_bread3 where s_id
+    </select>
+</mapper>
