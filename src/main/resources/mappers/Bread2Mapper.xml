@@ -4,6 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="tw.com.kai.web.webbread.mappers.Bread2Mapper">
     <select id="listBread1" resultType="tw.com.kai.web.webbread.pojo.Bread1">
-        SELECT * FROM t_bread2 WHERE q_id
+        SELECT * FROM t_bread2 WHERE q_id > 0
     </select>
 </mapper>

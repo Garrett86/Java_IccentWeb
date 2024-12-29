@@ -1,5 +1,7 @@
 package tw.com.kai.web.webbread.servlet;
 
+import tw.com.kai.web.webbread.dao.Impl.UserDaoV2Impl;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,42 +29,22 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String uname = req.getParameter("uname");
         String pwd = req.getParameter("pwd");
-        // 驗證使用者憑證
-        if(validateUser(uname,pwd)){
+
+        UserDaoV2Impl userService = new UserDaoV2Impl();
+
+        if (userService.validateUser(uname, pwd)) {
             HttpSession session = req.getSession();
-            session.setAttribute("uname",uname);
-            if(Objects.equals(uname, "root")){
+            session.setAttribute("uname", uname);
+
+            if (Objects.equals(uname, "root")) {
                 resp.sendRedirect("success-backServlet");
-            }else{
+            } else {
                 resp.sendRedirect("LogServ");
             }
-        }else{
-            resp.sendRedirect("login.jsp?error=Invalid uname or pwd");
+        } else {
+            req.setAttribute("error", "Invalid username or password.");
+            req.getRequestDispatcher("indexServlet").forward(req, resp);
         }
-    }
-    private Boolean validateUser(String uname, String pwd){
-        boolean isValue = false;
-        // 資料庫連接參數
-        String DbURL = "jdbc:mysql://127.0.0.1:3306/bread_mall";
-        String DbUser = "root";
-        String DbPwd = "Password";
-
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(DbURL, DbUser, DbPwd);
-            String sql = "select * from bread_mall.t_user where uname=? and pwd=?";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, uname);
-            ps.setString(2, pwd);
-            ResultSet rs = ps.executeQuery();
-            if(rs.next()){
-                isValue = true;
-            }
-            conn.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return isValue;
     }
 }
 

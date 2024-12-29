@@ -5,21 +5,28 @@
 <configuration>
     <settings>
         <!-- 啟用日誌 -->
-        <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <setting name="logImpl" value="SLF4J"/>
     </settings>
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://127.0.0.1:3306/bread_mall"/>
-                <property name="username" value="root"/>
-                <property name="password" value="Password"/>
+                <property name="driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+                <property name="url" value="jdbc:sqlserver://34.136.28.87:1433;databaseName=bread_mall;encrypt=true;trustServerCertificate=true"/>
+                <property name="username" value="sqlserver" />
+                <property name="password" value="Password" />
+
+                <!--MySQL JBCD連接-->
+                <!--                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>-->
+                <!--                <property name="url" value="jdbc:mysql://127.0.0.1:3306/bread_mall"/>-->
+                <!--                <property name="username" value="root"/>-->
+                <!--                <property name="password" value="Password"/>-->
                 <!-- 可選：連接配置 -->
-                <property name="poolMaximumActiveConnections" value="10"/>
-                <property name="poolMaximumIdleConnections" value="5"/>
-                <property name="poolMaximumCheckoutTime" value="20000"/>
-                <property name="poolTimeToWait" value="20000"/>
+
+                <property name="poolMaximumActiveConnections" value="50"/>
+                <property name="poolMaximumIdleConnections" value="10"/>
+                <property name="poolMaximumCheckoutTime" value="30000"/>
+                <property name="poolTimeToWait" value="10000"/>
             </dataSource>
         </environment>
     </environments>
@@ -30,5 +37,6 @@
         <mapper resource="mappers/Bread2Mapper.xml"/>
         <mapper resource="mappers/Bread3Mapper.xml"/>
         <mapper resource="mappers/ProductMapper.xml"/>
+        <mapper resource="mappers/UserMapper.xml"/>
     </mappers>
 </configuration>

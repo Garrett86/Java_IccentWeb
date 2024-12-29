@@ -1,8 +1,11 @@
 package tw.com.kai.web.webbread.servlet;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import tw.com.kai.web.webbread.dao.Impl.ProductDaoImpI;
 import tw.com.kai.web.webbread.dao.ProductDao;
 import tw.com.kai.web.webbread.pojo.Bread;
+import tw.com.kai.web.webbread.utils.MyBatisUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,55 +24,66 @@ public class ProductServlet extends HttpServlet {
         // 設置請求的字符編碼為 UTF-8
         req.setCharacterEncoding("UTF-8");
 
-        ProductDao dao = new ProductDaoImpI();
-        Bread bread = new Bread();
-        String status = req.getParameter("status");
-        if(status.equals("addProduct")) {
-//            System.out.println("addProduct");
-            bread.setBreadImg(req.getParameter("image"));
-            bread.setBreadName(req.getParameter("title"));
-            bread.setPrice(req.getParameter("price"));
-            bread.setSaleCount(req.getParameter("saleCount"));
-            bread.setBreadCount(req.getParameter("breadCount"));
-            dao.save(bread);
+        SqlSessionFactory sqlSessionFactory = MyBatisUtil.getSqlSessionFactory();
+        try (SqlSession session = sqlSessionFactory.openSession()) {
+            ProductDao dao = session.getMapper(ProductDao.class);
+            Bread bread = new Bread();
+            String status = req.getParameter("status");
 
-            String breadName = req.getParameter("title");
-            List<Bread> list = dao.search(breadName);
-            resp.setContentType("text/html;charset=UTF-8");
-            req.setAttribute("list", list);
-            req.getRequestDispatcher("/WEB-INF/page2/queryproduct.jsp").forward(req, resp);
-        }else if(status.equals("findProduct")) {
-           String breadName = req.getParameter("title");
-            List<Bread> list = dao.search(breadName);
-            resp.setContentType("text/html;charset=UTF-8");
-            req.setAttribute("list",list);
-            req.getRequestDispatcher("/WEB-INF/page2/queryproduct.jsp").forward(req, resp);
-        }else if(status.equals("updateProduct")) {
-            bread.setId(Integer.parseInt(req.getParameter("id")));
-            bread.setBreadImg(req.getParameter("image"));
-            bread.setBreadName(req.getParameter("title"));
-            bread.setPrice(req.getParameter("price"));
-            bread.setSaleCount(req.getParameter("saleCount"));
-            bread.setBreadCount(req.getParameter("breadCount"));
-            dao.update(bread);
+            switch (status) {
+                case "addProduct":
+                    bread.setBreadImg(req.getParameter("image"));
+                    bread.setBreadName(req.getParameter("title"));
+                    bread.setPrice(req.getParameter("price"));
+                    bread.setSaleCount(req.getParameter("saleCount"));
+                    bread.setBreadCount(req.getParameter("breadCount"));
+                    dao.save(bread);
+                    session.commit();  // 提交事務
 
-            String breadName = req.getParameter("title");
-            List<Bread> list = dao.search(breadName);
-            req.setAttribute("list", list);
-            resp.setContentType("text/html;charset=UTF-8");
-            req.getRequestDispatcher("/WEB-INF/page2/queryproduct.jsp").forward(req, resp);
+                    String breadName = req.getParameter("title");
+                    List<Bread> list = dao.search(breadName);
+                    req.setAttribute("list", list);
+                    req.getRequestDispatcher("/WEB-INF/page2/queryproduct.jsp").forward(req, resp);
+                    break;
 
-        }else if(status.equals("deleteProduct")){
-            int id = Integer.parseInt(req.getParameter("id"));
-            dao.delete(id);
+                case "findProduct":
+                    breadName = req.getParameter("title");
+                    list = dao.search(breadName);
+                    req.setAttribute("list", list);
+                    req.getRequestDispatcher("/WEB-INF/page2/queryproduct.jsp").forward(req, resp);
+                    break;
 
-            String breadName = req.getParameter("title");
-            List<Bread> list = dao.search(breadName);
-            resp.setContentType("text/html;charset=UTF-8");
-            req.setAttribute("list", list);
-            req.getRequestDispatcher("/WEB-INF/page2/queryproduct.jsp").forward(req, resp);
-        }else{
-            System.out.println("錯誤!!");
+                case "updateProduct":
+                    bread.setId(Integer.parseInt(req.getParameter("id")));
+                    bread.setBreadImg(req.getParameter("image"));
+                    bread.setBreadName(req.getParameter("title"));
+                    bread.setPrice(req.getParameter("price"));
+                    bread.setSaleCount(req.getParameter("saleCount"));
+                    bread.setBreadCount(req.getParameter("breadCount"));
+                    dao.update(bread);
+                    session.commit();  // 提交事務
+
+                    breadName = req.getParameter("title");
+                    list = dao.search(breadName);
+                    req.setAttribute("list", list);
+                    req.getRequestDispatcher("/WEB-INF/page2/queryproduct.jsp").forward(req, resp);
+                    break;
+
+                case "deleteProduct":
+                    int id = Integer.parseInt(req.getParameter("id"));
+                    dao.delete(id);
+                    session.commit();  // 提交事務
+
+                    breadName = req.getParameter("title");
+                    list = dao.search(breadName);
+                    req.setAttribute("list", list);
+                    req.getRequestDispatcher("/WEB-INF/page2/queryproduct.jsp").forward(req, resp);
+                    break;
+
+                default:
+                    System.out.println("錯誤!!");
+                    break;
+            }
         }
     }
 

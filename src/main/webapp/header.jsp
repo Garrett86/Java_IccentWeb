@@ -15,10 +15,32 @@
 <%--<link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet" />--%>
 <script src="https://kit.fontawesome.com/48f037bec9.js" crossorigin="anonymous"></script>
 <link href="static/css/base.css" rel="stylesheet" />
-<link href="static/css/login_in.css" rel="stylesheet" />
-<link href="static/css/about.css" rel="stylesheet" />
-<link href="static/css/shop_1.css" rel="stylesheet" />
-<link href="static/css/sale.css" rel="stylesheet" />
+<script>
+    function loadCSS(filename) {
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = filename;
+        document.head.appendChild(link);
+    }
+    var currentPage = window.location.pathname;
+    if (currentPage.includes("breadServlet")) {
+        loadCSS('static/css/shop_1.css');
+    } else if (currentPage.includes("breadSvl")) {
+        loadCSS('static/css/shop_1.css');
+    }else if (currentPage.includes("breadSvle")) {
+        loadCSS('static/css/shop_1.css');
+    } else if (currentPage.includes("aboutServlet")) {
+        loadCSS('static/css/about.css');
+    } else if (currentPage.includes("saleSlv")) {
+        loadCSS('static/css/about.css');
+        loadCSS('static/css/sale.css');
+    }else if (currentPage.includes("logServlet")) {
+        loadCSS('static/css/login_in.css');
+    }else if (currentPage.includes("comSlv")) {
+        loadCSS('static/css/about.css');
+    }
+
+</script>
 <link rel="icon" type="image/x-icon" href="favicon.ico" />
 
 </head>

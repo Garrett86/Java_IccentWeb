@@ -9,23 +9,25 @@
 <%@include file="/header.jsp"%>
 
 <!-- ===================================================== -->
-<div class="container marketing">
-    <div class="row clearfix">
-        <div class="login-a2">
+<main>
+    <div class="container marketing">
+        <div class="row clearfix">
+            <div class="login-a2">
 
-            <div class="page-inner">
-                <div class="box-css">
-                    <p class="login-title">登入</p>
-                    <form action="loginServlet" method="post">
-                        <input type="text" class=" input_btn unline-input" placeholder="電郵或手機號碼" id="uname" name="uname">
-                        <input type="password" class=" input_btn2 unline-input" placeholder="密碼" id="pwd" name="pwd"><br>
-                        <a class="chak-link" href="...">忘記密碼?</a>
-                        <button type="submit" class="lg_in lg_btn">登入</button>
-                    </form>
+                <div class="page-inner">
+                    <div class="box-css">
+                        <p class="login-title">登入</p>
+                        <form action="loginServlet" method="post">
+                            <input type="text" class=" input_btn unline-input" placeholder="電郵或手機號碼" id="uname" name="uname">
+                            <input type="password" class=" input_btn2 unline-input" placeholder="密碼" id="pwd" name="pwd"><br>
+                            <a class="chak-link" href="...">忘記密碼?</a>
+                            <button type="submit" class="lg_in lg_btn">登入</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</main>
 <%@include file="/footer.jsp"%>
 
