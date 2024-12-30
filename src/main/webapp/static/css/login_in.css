@@ -9,6 +9,11 @@ main{
   transform: translate(-50%, -50%); /* 移動到正中間 */
 }
 
+.login-market{
+	position: relative;
+	top: 55px;
+}
+
 .login-a2 {
   max-width: 500px;
   margin: 50px auto;
