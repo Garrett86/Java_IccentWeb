@@ -10,7 +10,7 @@
 
 <!-- ===================================================== -->
 <main>
-    <div class="container marketing">
+    <div class="container marketing login-market">
         <div class="row clearfix">
             <div class="login-a2">
 
