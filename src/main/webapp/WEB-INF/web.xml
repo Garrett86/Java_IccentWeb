@@ -3,7 +3,7 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>WebBreadMyBatis_Ver.1</display-name>
+  <display-name>WebBreadMyBatis</display-name>
 
   <welcome-file-list>
     <welcome-file>indexServlet</welcome-file>
