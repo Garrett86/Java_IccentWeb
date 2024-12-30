@@ -22,24 +22,28 @@
         link.href = filename;
         document.head.appendChild(link);
     }
-    var currentPage = window.location.pathname;
-    if (currentPage.includes("breadServlet")) {
-        loadCSS('static/css/shop_1.css');
-    } else if (currentPage.includes("breadSvl")) {
-        loadCSS('static/css/shop_1.css');
-    }else if (currentPage.includes("breadSvle")) {
-        loadCSS('static/css/shop_1.css');
-    } else if (currentPage.includes("aboutServlet")) {
-        loadCSS('static/css/about.css');
-    } else if (currentPage.includes("saleSlv")) {
-        loadCSS('static/css/about.css');
-        loadCSS('static/css/sale.css');
-    }else if (currentPage.includes("logServlet")) {
-        loadCSS('static/css/login_in.css');
-    }else if (currentPage.includes("comSlv")) {
-        loadCSS('static/css/about.css');
-    }
 
+    var currentPage = window.location.pathname;
+
+    // 定義路徑和對應的 CSS 檔案
+    var cssMapping = {
+        "breadServlet": ['static/css/shop_1.css'],
+        "breadSvl": ['static/css/shop_1.css'],
+        "breadSvle": ['static/css/shop_1.css'],
+        "aboutServlet": ['static/css/about.css'],
+        "saleSlv": ['static/css/about.css', 'static/css/sale.css'],
+        "logServlet": ['static/css/login_in.css'],
+        "comSlv": ['static/css/about.css'],
+        "ShopOrd": ['static/css/shop_1.css']
+    };
+
+    // 遍歷對應表並載入 CSS
+    for (var key in cssMapping) {
+        if (currentPage.includes(key)) {
+            cssMapping[key].forEach(loadCSS);
+            break; // 找到匹配後結束迴圈
+        }
+    }
 </script>
 <link rel="icon" type="image/x-icon" href="favicon.ico" />
 

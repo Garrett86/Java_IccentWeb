@@ -11,7 +11,7 @@
 <!-- ===================================================== -->
 <main>
     <div class="container marketing">
-        <div class="row clearfix">
+        <div class="row clearfix login-center">
             <div class="login-a2">
 
                 <div class="page-inner">

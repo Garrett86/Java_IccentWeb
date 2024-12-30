@@ -1,11 +1,20 @@
 main{
-  background-color: #CCDAE1;
+  background-color: #CCDAE1; !important;
+}
+
+.login-center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 移動到正中間 */
 }
 
 .login-a2 {
   max-width: 500px;
   margin: 50px auto;
 }
+
+
 
 .login-a2 .page-inner {
   border-left-color: #ffff;
