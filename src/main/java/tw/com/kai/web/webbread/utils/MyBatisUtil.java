@@ -1,13 +1,18 @@
 package tw.com.kai.web.webbread.utils;
 
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.apache.ibatis.session.Configuration;
+import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
+import org.apache.ibatis.mapping.Environment;
+import org.apache.ibatis.builder.xml.XMLConfigBuilder;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MyBatisUtil {
@@ -16,38 +21,51 @@ public class MyBatisUtil {
 
     static {
         try {
-            // 加載 MyBatis 配置檔
             String resource = "mybatis-config.xml";
             InputStream inputStream = Resources.getResourceAsStream(resource);
-            sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-            logger.info("MyBatis SqlSessionFactory initialized successfully.");
+
+            // HikariCP 設定
+            HikariConfig hikariConfig = new HikariConfig();
+            hikariConfig.setJdbcUrl("jdbc:mysql://mdy5xlha9cp31ysz:kmwdg0pbehfqqe1j@muowdopceqgxjn2b3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/murqsny7x16bj6cv");
+            hikariConfig.setUsername("tmdy5xlha9cp31ysz");
+            hikariConfig.setPassword("kmwdg0pbehfqqe1j");
+            hikariConfig.setDriverClassName("com.mysql.cj.jdbc.Driver");
+            hikariConfig.setMaximumPoolSize(10);
+            hikariConfig.setIdleTimeout(30000);
+            HikariDataSource dataSource = new HikariDataSource(hikariConfig);
+
+            // 解析 MyBatis XML 配置
+            XMLConfigBuilder parser = new XMLConfigBuilder(inputStream);
+            Configuration configuration = parser.parse();
+
+            // 設定 DataSource 環境
+            Environment environment = new Environment("development", new JdbcTransactionFactory(), dataSource);
+            configuration.setEnvironment(environment);
+
+            // 建立 SqlSessionFactory
+            sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
+
         } catch (IOException e) {
-            logger.log(Level.SEVERE, "Failed to load MyBatis configuration", e);
-            throw new RuntimeException("Failed to load MyBatis configuration", e);
+            logger.severe("MyBatis 初始化失敗: " + e.getMessage());
+            throw new RuntimeException("MyBatis 初始化失敗", e);
         }
     }
 
-    // 獲取 SqlSession，默認不自動提交
     public static SqlSession getSqlSession() {
         return getSqlSession(false);
     }
 
-    //獲取 SqlSession，指定是否自動提交
     public static SqlSession getSqlSession(boolean autoCommit) {
         return sqlSessionFactory.openSession(autoCommit);
     }
 
-    // 獲取 SqlSessionFactory
     public static SqlSessionFactory getSqlSessionFactory() {
         return sqlSessionFactory;
     }
 
-    // 關閉 SqlSession（在必要時可額外調用）
     public static void closeSqlSession(SqlSession session) {
         if (session != null) {
             session.close();
         }
     }
-
 }
-
